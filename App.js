@@ -1,18 +1,21 @@
 import React from 'react';
-import {NavigationContainer} from '@react-naigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import invoiceListScreen from './screens/invoiceListScreen';
-
-const Stack = createStackNavigator();
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import SignInScreen from './src/screens/SignInScreen';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Invoice List" component={invoiceListScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.root}>
+      <SignInScreen />
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default App;
