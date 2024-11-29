@@ -1,79 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Invoice Maker App
 
-# Getting Started
+This **Invoice Maker App** is a user-friendly application designed to streamline the process of creating, managing, and tracking invoices. 
+Built for businesses and freelancers, it offers customizable templates, real-time tracking, and a robust backend for secure storage and analysis.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 📃Features
 
-## Step 1: Start the Metro Server
+- **Invoice Creation**: Easily create professional invoices with pre-designed templates.
+- **Customization**: Add logos, company details, and client information effortlessly.
+- **Tracking**: Monitor the status of invoices (e.g., Paid, Unpaid, Overdue).
+- **Secure Storage**: All data is securely stored in a backend database.
+- **Analysis**: Gain insights into your financial performance through integrated analysis tools.
+- **Export Options**: Save invoices as PDF or send them via email directly from the app.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🛠Tech Stack: 
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Frontend**: ReactJS
+- **Backend**: NodeJS, Express
+- **Database**: MongoDB
+- **AI Integration**: Gemini AI for advanced expense and financial tracking (optional).
 
-```bash
-# using npm
-npm start
+## 🔌Installation
 
-# OR using Yarn
-yarn start
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/invoice-maker.git
+   cd invoice-maker
 
-## Step 2: Start your Application
+2. **Install backend dependencies**:
+   ```
+    cd server
+    npm install
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+3.  Install frontend dependencies:
+    ```
+    cd ../client
+    npm install
 
-### For Android
+4. Set Up Environment Variables:
+  - Create a .env file in the server directory with the following:
+    - PORT=5000
+    - DB_URI=your-database-uri
+    - JWT_SECRET=your-secret-key
+    - AI_API_KEY=your-gemini-ai-key (optional)
 
-```bash
-# using npm
-npm run android
+5. Start the Application:
+### Start backend
+    cd server
+    npm start
 
-# OR using Yarn
-yarn android
-```
+### Start frontend
+    cd ../client
+    npm start
+    Open your browser and navigate to http://localhost:3000.
 
-### For iOS
+## 🕹Usage:
+ - **Sign Up:** Create an account to start using the app.
+ - **Create Invoices:** Add your business and client details, and customize your invoice template.
+ - **Track Payments:** Update invoice statuses and track payments in real time.
+ - **Export and Share:** Save or share invoices via email directly.
 
-```bash
-# using npm
-npm run ios
+## 🎭Contributing:
+ - Contributions are welcome! To contribute:
+   - Fork the repository.
+   - Create a new branch for your feature/bug fix:
+   ```
+   git checkout -b feature-name
+ - Commit your changes and push them to your fork:
+     ```
+     git commit -m "Description of feature/bug fix"
+     git push origin feature-name
+  - Open a pull request and describe your changes.
 
-# OR using Yarn
-yarn ios
-```
+## ©License
+- This project is licensed under the MIT License.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## 📧Contact
+- For questions or feedback, feel free to reach out:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+- **Samuel Ugochukwu** [Email](Samuraxworld@gmail.com) [GitHub](github.com/Samuraxworld)
+- **Your-fullName** [Email](your-usernamed@gmail.com) [GitHub](github.com/your-username)
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 💻Happy invoicing!
