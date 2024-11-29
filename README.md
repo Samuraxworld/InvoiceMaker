@@ -82,4 +82,3 @@ Built for businesses and freelancers, it offers customizable templates, real-tim
 
 
 ## 💻Happy invoicing!
-
