@@ -6,17 +6,18 @@ const CustomButton = ({onPress, text, type = 'PRIMARY', bgColor, fgColor}) => {
     <Pressable
       onPress={onPress}
       style={[
-        styles.container, 
+        styles.container,
         styles[`container_${type}`],
-        bgColor ? {backgroundColor: bgColor} : {}
+        bgColor ? {backgroundColor: bgColor} : {},
+      ]}>
+      <Text
+        style={[
+          styles.text,
+          styles[`text_${type}`],
+          fgColor ? {color: fgColor} : {},
         ]}>
-      <Text style={[
-        styles.text, 
-        styles[`text_${type}`],
-        fgColor ? {color: fgColor} : {},
-        ]}>
-          {text}
-          </Text>
+        {text}
+      </Text>
     </Pressable>
   );
 };
@@ -36,11 +37,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#003153',
   },
 
+  container_SECONDARY: {
+    borderColor: '#003153',
+    borderWidth: 2,
+  },
+
   container_TERTIARY: {},
 
   text: {
     fontWeight: 'bold',
     color: '#fff',
+  },
+
+  text_SECONDARY: {
+    color: '#003153',
   },
 
   text_TERTIARY: {
