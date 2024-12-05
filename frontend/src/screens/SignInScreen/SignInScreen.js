@@ -11,19 +11,25 @@ import Logo from '../../../assets/images/Logo.jpg';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
+import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const {height} = useWindowDimensions();
+  const navigation = useNavigation();
+
   const onSignInPressed = () => {
-    console.warn('Sign In');
+    // validate username and password
+
+    navigation.navigate('HomeScreen');
   };
   const onForgotPaswordPressed = () => {
-    console.warn('onForgotPasswordPressed');
+    navigation.navigate('ForgotPassword');
   };
   const onSignUpPress = () => {
-    console.warn('onSignUpPress');
+    navigation.navigate('SignUp');
   };
 
   return (
@@ -71,6 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   root: {
+    backgroundColor: '#fff',
     width: '100%',
     alignItems: 'center',
     paddingHorizontal: 20,
