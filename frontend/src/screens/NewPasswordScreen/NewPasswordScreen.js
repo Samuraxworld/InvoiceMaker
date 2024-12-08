@@ -4,45 +4,55 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 const NewPasswordScreen = () => {
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation();
 
-  const onSubmitPressed = () => {
+  const onSubmitPressed = (data) => {
+    console.warn(data);
     navigation.navigate('SignIn');
   };
-  
+
   const onSignInPress = () => {
     navigation.navigate('SignIn');
   };
- 
+
   return (
-    
-  <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-    <View style={styles.root}>
-      <Text style={styles.title}>Reset your password</Text>
+    <ScrollView
+      contentContainerStyle={styles.scrollContainer}
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Reset your password</Text>
 
-      <CustomInput
+        <CustomInput
+        name="code"
+        control={control} 
         placeholder="Code"
-        value={code}
-        setValue={setCode}
-      />
-      <CustomInput
+        rules={{
+          required: 'Code is required'
+        }} 
+        />
+        <CustomInput
+        name="Password"
+        control={control}
         placeholder="Enter new password"
-        value={newPassword}
-        setValue={setNewPassword}
-      />
+        secureTextEntry={true}
+        rules={{
+          required: 'Password is required',
+          minLength: {value: 6, message: 'Password must have at least 6 characters'}
+        }}
+        />
 
-      <CustomButton text="Submit" onPress={onSubmitPressed} />
+        <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
 
-      <CustomButton
-        text="Back to Sign in"
-        onPress={onSignInPress}
-        type="TERTIARY"
-      />
+        <CustomButton
+          text="Back to Sign in"
+          onPress={onSignInPress}
+          type="TERTIARY"
+        />
       </View>
     </ScrollView>
   );
