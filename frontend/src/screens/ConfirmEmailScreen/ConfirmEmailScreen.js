@@ -4,13 +4,15 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 const ConfirmEmailScreen = () => {
-  const [code, setCode] = useState('');
+  const {control, handleSubmit} = useForm();
 
   const navigation = useNavigation();
 
-  const onConfirmPressed = () => {
+  const onConfirmPressed = (data) => {
+    console.warn(data);
     navigation.navigate('HomeScreen');
   };
   const onSignInPress = () => {
@@ -27,12 +29,15 @@ const ConfirmEmailScreen = () => {
       <Text style={styles.title}>Comfirm your email</Text>
 
       <CustomInput
-        placeholder="Enter your confirmation code"
-        value={code}
-        setValue={setCode}
+      name="code"
+      control={control}
+      placeholder="Enter your confirmation code"
+      rules={{
+        required: 'Confirmation code is required'
+      }}
       />
 
-      <CustomButton text="Confirm" onPress={onConfirmPressed} />
+      <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)} />
 
       <CustomButton
         text="Resend code"

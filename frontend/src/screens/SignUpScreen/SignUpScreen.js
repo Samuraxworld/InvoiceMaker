@@ -4,17 +4,17 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const SignUpScreen = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const {control, handleSubmit, watch} = useForm();
+  const pwd = watch('password', '');
 
   const navigation = useNavigation();
 
   const onRegisterPressed = () => {
-    navigation.navigate('ConfirmEmailScreen');
+    navigation.navigate('SignIn');
   };
   const onSignInPress = () => {
     navigation.navigate('SignIn');
@@ -32,28 +32,38 @@ const SignUpScreen = () => {
       <Text style={styles.title}>Create an account</Text>
 
       <CustomInput
-        placeholder="Username"
-        value={username}
-        setValue={setUsername}
+      name="username"
+      control={control}
+      placeholder="Username"
+      rules={{required: 'Username is required'}}
+      
       />
-      <CustomInput placeholder="Email" 
-      value={email} 
-      setValue={setEmail} 
+      <CustomInput 
+      name="Email"
+      control={control}
+      placeholder="Email"
+      rules={{pattern: {value: EMAIL_REGEX, message: 'Invalid email address'}, required: 'Email is required'}} 
+  
       />
       <CustomInput
-        placeholder="Password"
-        value={password}
-        setValue={setPassword}
-        secureTextEntry={true}
+      name="password"
+      control={control} 
+      placeholder="Password"
+      rules={{required: 'Password is required', minLength: {value: 6, message: 'Password must have at least 6 characters'}}}  
+      secureTextEntry={true}
       />
       <CustomInput
-        placeholder="Confirm Password"
-        value={passwordConfirm}
-        setValue={setPasswordConfirm}
-        secureTextEntry={true}
+      name="passwordConfirm"
+      control={control}
+      placeholder="Confirm Password"
+      rules={{
+        validate: value => 
+          value == pwd || 'Passwords do not match'
+      }}
+      secureTextEntry={true}
       />
 
-      <CustomButton text="Register" onPress={onRegisterPressed} />
+      <CustomButton text="Register" onPress={handleSubmit(onRegisterPressed)} />
       <Text style={styles.text}>
         By registering, you confirm that you accept our{' '}
         <Text style={styles.link} onPress={onTermsOfUsePressed}>Terms of Use</Text> and{' '}
