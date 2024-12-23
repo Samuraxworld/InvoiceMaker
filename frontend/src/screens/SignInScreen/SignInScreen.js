@@ -6,7 +6,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
-  TextInput
+  TextInput,
 } from 'react-native';
 import Logo from '../../../assets/images/Logo.jpg';
 import CustomInput from '../../components/CustomInput';
@@ -15,20 +15,17 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 
-
 const SignInScreen = () => {
-  
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
   const {
-    control, 
-    handleSubmit, 
+    control,
+    handleSubmit,
     formState: {errors},
-} = useForm();
+  } = useForm();
 
-
-  const onSignInPressed = (data) => {
+  const onSignInPressed = data => {
     console.log(data);
     // validate username and password
 
@@ -49,23 +46,30 @@ const SignInScreen = () => {
           style={[styles.logo, {height: height * 0.3}]}
           resizeMode="contain"
         />
-         <CustomInput
-         name="username"
+        <CustomInput
+          name="username"
           placeholder="Username"
           control={control}
-          rules={{required: 'Username is required'}}
+          rules={{required: 'Username is required *'}}
+          iconName="user"
         />
         <CustomInput
-        name="password"
+          name="password"
           placeholder="Password"
           secureTextEntry={true}
           control={control}
-          rules={{required: 'Password is required', minLength: {value: 6, message: 'Password should be at least 6 characters'}}}
+          rules={{
+            required: 'Password is required *',
+            minLength: {
+              value: 6,
+              message: 'Password should be at least 6 characters',
+            },
+          }}
+          iconName= "lock" 
         />
 
-
         <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
-        
+
         <CustomButton
           text="Forgot Password"
           onPress={onForgotPaswordPressed}

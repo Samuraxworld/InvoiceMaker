@@ -11,7 +11,7 @@ const NewPasswordScreen = () => {
 
   const navigation = useNavigation();
 
-  const onSubmitPressed = (data) => {
+  const onSubmitPressed = data => {
     console.warn(data);
     navigation.navigate('SignIn');
   };
@@ -28,22 +28,27 @@ const NewPasswordScreen = () => {
         <Text style={styles.title}>Reset your password</Text>
 
         <CustomInput
-        name="code"
-        control={control} 
-        placeholder="Code"
-        rules={{
-          required: 'Code is required'
-        }} 
+          name="code"
+          control={control}
+          placeholder="Code"
+          rules={{
+            required: 'Code is required *',
+          }}
+          iconName="shield"
         />
         <CustomInput
-        name="Password"
-        control={control}
-        placeholder="Enter new password"
-        secureTextEntry={true}
-        rules={{
-          required: 'Password is required',
-          minLength: {value: 6, message: 'Password must have at least 6 characters'}
-        }}
+          name="Password"
+          control={control}
+          placeholder="Enter new password"
+          secureTextEntry={true}
+          rules={{
+            required: 'Password is required *',
+            minLength: {
+              value: 6,
+              message: 'Password must have at least 6 characters',
+            },
+          }}
+          iconName="lock" 
         />
 
         <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
