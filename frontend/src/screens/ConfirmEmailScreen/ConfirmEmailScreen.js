@@ -11,45 +11,47 @@ const ConfirmEmailScreen = () => {
 
   const navigation = useNavigation();
 
-  const onConfirmPressed = (data) => {
+  const onConfirmPressed = data => {
     console.warn(data);
     navigation.navigate('HomeScreen');
   };
   const onSignInPress = () => {
     navigation.navigate('SignIn');
   };
- 
+
   const onResendPress = () => {
     console.warn('onResendPress');
   };
   return (
-    
-  <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-    <View style={styles.root}>
-      <Text style={styles.title}>Comfirm your email</Text>
+    <ScrollView
+      contentContainerStyle={styles.scrollContainer}
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Comfirm your email</Text>
 
-      <CustomInput
-      name="code"
-      control={control}
-      placeholder="Enter your confirmation code"
-      rules={{
-        required: 'Confirmation code is required'
-      }}
-      />
+        <CustomInput
+          name="code"
+          control={control}
+          placeholder="Enter your confirmation code"
+          rules={{
+            required: 'Confirmation code is required *',
+          }}
+          iconName="key"
+        />
 
-      <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)} />
+        <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)} />
 
-      <CustomButton
-        text="Resend code"
-        onPress={onResendPress}
-        type="SECONDARY"
-      />
+        <CustomButton
+          text="Resend code"
+          onPress={onResendPress}
+          type="SECONDARY"
+        />
 
-      <CustomButton
-        text="Back to Sign in"
-        onPress={onSignInPress}
-        type="TERTIARY"
-      />
+        <CustomButton
+          text="Back to Sign in"
+          onPress={onSignInPress}
+          type="TERTIARY"
+        />
       </View>
     </ScrollView>
   );

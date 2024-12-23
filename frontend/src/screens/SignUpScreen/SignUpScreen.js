@@ -26,57 +26,78 @@ const SignUpScreen = () => {
     console.warn('onPrivacyPressed');
   };
   return (
-    
-  <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-    <View style={styles.root}>
-      <Text style={styles.title}>Create an account</Text>
+    <ScrollView
+      contentContainerStyle={styles.scrollContainer}
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Create an account</Text>
 
-      <CustomInput
-      name="username"
-      control={control}
-      placeholder="Username"
-      rules={{required: 'Username is required'}}
-      
-      />
-      <CustomInput 
-      name="Email"
-      control={control}
-      placeholder="Email"
-      rules={{pattern: {value: EMAIL_REGEX, message: 'Invalid email address'}, required: 'Email is required'}} 
-  
-      />
-      <CustomInput
-      name="password"
-      control={control} 
-      placeholder="Password"
-      rules={{required: 'Password is required', minLength: {value: 6, message: 'Password must have at least 6 characters'}}}  
-      secureTextEntry={true}
-      />
-      <CustomInput
-      name="passwordConfirm"
-      control={control}
-      placeholder="Confirm Password"
-      rules={{
-        validate: value => 
-          value == pwd || 'Passwords do not match'
-      }}
-      secureTextEntry={true}
-      />
+        <CustomInput
+          name="username"
+          control={control}
+          placeholder="Username"
+          rules={{required: 'Username is required *'}}
+          iconName="user"
+        />
+        <CustomInput
+          name="Email"
+          control={control}
+          placeholder="Email"
+          rules={{
+            pattern: {value: EMAIL_REGEX, message: 'Invalid email address'},
+            required: 'Email is required *',
+          }}
+          iconName="envelope"
+        
+        />
+        <CustomInput
+          name="password"
+          control={control}
+          placeholder="Password"
+          rules={{
+            required: 'Password is required *',
+            minLength: {
+              value: 6,
+              message: 'Password must have at least 6 characters',
+            },
+          }}
+          secureTextEntry={true}
+          iconName="lock" 
+        />
+        <CustomInput
+          name="passwordConfirm"
+          control={control}
+          placeholder="Confirm Password"
+          rules={{
+            validate: value => value == pwd || 'Passwords do not match *',
+          }}
+          secureTextEntry={true}
+          iconName="unlock" 
+        />
 
-      <CustomButton text="Register" onPress={handleSubmit(onRegisterPressed)} />
-      <Text style={styles.text}>
-        By registering, you confirm that you accept our{' '}
-        <Text style={styles.link} onPress={onTermsOfUsePressed}>Terms of Use</Text> and{' '}
-        <Text style={styles.link} onPress={onPrivacyPressed}>Privacy Policy</Text>
-      </Text>
+        <CustomButton
+          text="Register"
+          onPress={handleSubmit(onRegisterPressed)}
+        />
+        <Text style={styles.text}>
+          By registering, you confirm that you accept our{' '}
+          <Text style={styles.link} onPress={onTermsOfUsePressed}>
+            Terms of Use
+          </Text>{' '}
+          and{' '}
+          <Text style={styles.link} onPress={onPrivacyPressed}>
+            Privacy Policy
+          </Text>
+        </Text>
 
-      <SocialSignInButtons />
+        <SocialSignInButtons />
 
-      <CustomButton
-        text="Already have an account? Sign in"
-        onPress={onSignInPress}
-        type="TERTIARY"
-      />
+        <CustomButton
+          text="Already have an account? Sign in"
+          onPress={onSignInPress}
+          type="TERTIARY"
+
+        />
       </View>
     </ScrollView>
   );

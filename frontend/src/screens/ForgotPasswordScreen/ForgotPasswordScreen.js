@@ -11,35 +11,37 @@ const ForgotPasswordScreen = () => {
 
   const navigation = useNavigation();
 
-  const onSendPressed = (data) => {
+  const onSendPressed = data => {
     console.warn(data);
     navigation.navigate('NewPassword');
   };
-  
+
   const onSignInPress = () => {
     navigation.navigate('SignIn');
   };
- 
+
   return (
-    
-  <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-    <View style={styles.root}>
-      <Text style={styles.title}>Reset your password</Text>
+    <ScrollView
+      contentContainerStyle={styles.scrollContainer}
+      showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Reset your password</Text>
 
-      <CustomInput
-      name="username"
-      control={control}
-      placeholder="Username"
-      rules={{required: 'Username is required'}}
-      />
+        <CustomInput
+          name="username"
+          control={control}
+          placeholder="Username"
+          rules={{required: 'Username is required *'}}
+          iconName="user"
+        />
 
-      <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
+        <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
 
-      <CustomButton
-        text="Back to Sign in"
-        onPress={onSignInPress}
-        type="TERTIARY"
-      />
+        <CustomButton
+          text="Back to Sign in"
+          onPress={onSignInPress}
+          type="TERTIARY"
+        />
       </View>
     </ScrollView>
   );
