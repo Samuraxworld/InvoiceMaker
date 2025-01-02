@@ -6,6 +6,7 @@ import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const ForgotPasswordScreen = () => {
   const {control, handleSubmit} = useForm();
 
@@ -28,11 +29,14 @@ const ForgotPasswordScreen = () => {
         <Text style={styles.title}>Reset your password</Text>
 
         <CustomInput
-          name="username"
+          name="Email"
           control={control}
-          placeholder="Username"
-          rules={{required: 'Username is required *'}}
-          iconName="user"
+          placeholder="Enter your email"
+          rules={{
+            pattern: {value: EMAIL_REGEX, message: 'Invalid email address'},
+            required: 'Email is required *',
+          }}
+          iconName="envelope"
         />
 
         <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
