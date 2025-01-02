@@ -22,18 +22,21 @@ const SocialSignInButtons = () => {
         onPress={onSignInFacebook}
         bgColor="#E7EAF4"
         fgColor="#4765a9"
+        iconName="facebook"
       />
       <CustomButton
         text="Sign In with Google"
         onPress={onSignInGoogle}
         bgColor="#FAE9EA"
         fgColor="#DD4D44"
+        iconName="google"
       />
       <CustomButton
         text="Sign In with Apple"
         onPress={onSignInApple}
         bgColor="#e3e3e3"
         fgColor="#363636"
+        iconName="apple"
       />
     </>
   );

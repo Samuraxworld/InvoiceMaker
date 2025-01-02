@@ -1,7 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const CustomButton = ({onPress, text, type = 'PRIMARY', bgColor, fgColor}) => {
+const CustomButton = ({
+  onPress,
+  text,
+  type = 'PRIMARY',
+  bgColor,
+  fgColor,
+  iconName,
+}) => {
   return (
     <Pressable
       onPress={onPress}
@@ -10,14 +18,24 @@ const CustomButton = ({onPress, text, type = 'PRIMARY', bgColor, fgColor}) => {
         styles[`container_${type}`],
         bgColor ? {backgroundColor: bgColor} : {},
       ]}>
-      <Text
-        style={[
-          styles.text,
-          styles[`text_${type}`],
-          fgColor ? {color: fgColor} : {},
-        ]}>
-        {text}
-      </Text>
+      <View style={styles.content}>
+        {iconName && (
+          <Icon
+            name={iconName}
+            size={20}
+            color={fgColor}
+            style={[styles.icon, {marginRight: 10}]}
+          />
+        )}
+        <Text
+          style={[
+            styles.text,
+            styles[`text_${type}`],
+            fgColor ? {color: fgColor} : {},
+          ]}>
+          {text}
+        </Text>
+      </View>
     </Pressable>
   );
 };
@@ -43,10 +61,15 @@ const styles = StyleSheet.create({
   },
 
   container_TERTIARY: {},
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 
   text: {
     fontWeight: 'bold',
     color: '#fff',
+    marginRight: 10,
   },
 
   text_SECONDARY: {
@@ -55,6 +78,10 @@ const styles = StyleSheet.create({
 
   text_TERTIARY: {
     color: '#003153',
+  },
+
+  icon: {
+    marginRight: 10,
   },
 });
 
